@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forwarded</title>
+    <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+    </style>
+    <link href="/style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="padded">
+      <a id="def">Send email using default app</a>
+      <br>
+      <br>
+      <a id="g"><img width="80vw" src="/imgs/webmail/gmail.png"></a>
+      <hr>
+      <a id="o"><img width="80vw" src="/imgs/webmail/outlook.png"></a>
+      <br>
+      <br>
+      <a id="f"><img width="80vw" src="/imgs/webmail/fastmail.png"></a>
+      <br>
+      <br>
+      <a id="z"><img width="80vw" src="/imgs/webmail/zoho.png"></a>
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const e = urlParams.get('e');
+            if (e) {
+                const email = e + "@fwdd.org";
+                document.getElementById("def").href = "mailto:" + email;
+                document.getElementById("g").href = "https://mail.google.com/mail/?view=cm&to=" + email;
+                document.getElementById("o").href = "https://outlook.live.com/mail/0/deeplink/compose/?to=" + email;
+                document.getElementById("f").href = "https://www.fastmail.com/mail/compose?to=" + email;
+                document.getElementById("z").href = "https://mail.zoho.com/zm/#compose/na?to=" + email;
+
+                // Optional: remove query param from URL
+                history.replaceState({}, '', '/');
+            };
+        });
+    </script>
+  </body>
+</html>
