@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forwarded</title>
-    <link rel="icon" type="image/x-icon" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <style>
@@ -14,15 +14,18 @@
     <link href="/style.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="padded">
-        <div class="row">
-          <h1>Coming Soon</h1>
-          <h3>Forwarded</h3>
-          <p>An email redirection service built to keep your personal email hidden</p>
-          <a href="https://instagram.com/fwdd_org" target="_blank">fwdd_org</a>
-        </div>
-      </div>
+    <div class="padded">
+      <h1>Coming Soon</h1>
+      <h3>Forwarded</h3>
+      <p>An email redirection service built to keep your personal email hidden</p>
+      <a href="https://instagram.com/fwdd_org" target="_blank">fwdd_org</a>
     </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const e = urlParams.get('e');
+      if (e) {
+        window.location.href = "https://www.fwdd.org/email?" + e
+      };
+    </script>
   </body>
 </html>
