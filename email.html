@@ -32,6 +32,7 @@
         window.addEventListener("DOMContentLoaded", () => {
             const urlParams = new URLSearchParams(window.location.search);
             const e = urlParams.get('e');
+            history.replaceState({}, '', '/');
             if (e) {
                 const email = e + "@fwdd.org";
                 document.getElementById("def").href = "mailto:" + email;
@@ -39,7 +40,6 @@
                 document.getElementById("o").href = "https://outlook.live.com/mail/0/deeplink/compose/?to=" + email;
                 document.getElementById("f").href = "https://www.fastmail.com/mail/compose?to=" + email;
                 document.getElementById("z").href = "https://mail.zoho.com/zm/#compose/na?to=" + email;
-                history.replaceState({}, '', '/');
             } else {
                 window.location.href = "https://www.fwdd.org/"
             };
