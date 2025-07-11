@@ -14,29 +14,17 @@
     <link href="/style.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <div class="header">
-      <a class="active" href="/">Home</a><a href="/apply">Apply</a><a href="/contact">Contact</a>
-    </div>
-    <hr>
     <div class="padded">
-      <h1>Forwarded</h1>
+      <h1>Coming Soon</h1>
+      <h3>Forwarded</h3>
       <p>An email redirection service built to keep your personal email hidden</p>
-      <button onclick="window.location.href='/apply'" class="cta-button">Get your own @fwdd.org email<img src="/imgs/icon.png" alt="Icon"></button>
-      <br><br><hr>
-      <h4>Keep Your Email Hidden</h4>
-      <p>Create email aliases that forward messages to your real inbox. Stop sharing your real email on social media and other websites.</p>
-      <h3>Works Everywhere</h3>
-      <p>Use your aliases on any site, and have it redirected to your real inbox, no matter what email client you use.</p>
-      <h3>Simple & Secure</h3>
-      <p>Uses <a href="https://www.mailgun.com/" target="_blank">Mailgun's email API</a> via <a href="https://support.squarespace.com/hc/en-us/articles/19000909092237-Email-forwarding-with-a-Squarespace-domain" target="_blank">Squarespace email forwarding</a>.</p>
-      <hr>
-      <a href="https://instagram.com/fwdd_org" target="_blank">@fwdd_org</a>
+      <a href="https://instagram.com/fwdd_org" target="_blank">fwdd_org</a>
     </div>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const e = urlParams.get('e');
       if (e) {
-        window.location.href = "https://www.fwdd.org/email?e=" + e
+        window.location.href = "https://www.fwdd.org/email?" + e
       };
     </script>
   </body>
