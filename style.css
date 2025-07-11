@@ -73,7 +73,7 @@ button, input.btn, button.cta-button {
     transition: transform 0.2s ease;
     cursor: pointer;
     color: #000000 !important;
-    border-style: solid;
+    border: 2px solid black;
 }
 button:hover, input.btn:hover, button.cta-button:hover {
     transform: translateY(-5px);
