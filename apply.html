@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forwarded</title>
+    <title>Apply - Forwarded</title>
     <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Apply for your own @fwdd.org email alias to protect your privacy and keep your personal email hidden.">
+    <meta name="keywords" content="apply email alias, fwdd.org email, email forwarding, email privacy, get email alias, secure email, hide real email, email application">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
     </style>
@@ -18,46 +18,46 @@
       <a href="/">Home</a><a class="active" href="/apply">Apply</a><a href="/contact">Contact</a>
     </div>
     <hr>
-    <h1>Apply For An @fwdd.org Email</h1>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdF-d_UnJxZkG298GmBJ6PFCPpbNnYwGYzRXfMZBIpTmiRuBw/formResponse"
-      target="_self"
-      id="bootstrapForm"
-      method="POST">
-    <fieldset>
-        <legend for="1026440286">Your email</legend>
-        <div class="form-group">
+    <div class="padded">
+      <h1>Apply For An @fwdd.org Email</h1>
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSdF-d_UnJxZkG298GmBJ6PFCPpbNnYwGYzRXfMZBIpTmiRuBw/formResponse"
+        target="_self"
+        id="bootstrapForm"
+        method="POST">
+        <fieldset>
+          <legend for="1026440286">Your email</legend>
+          <div class="form-group">
             <p class="help-block">For example: google123@gmail.com, supahot@hotmail.com, etc.</p>
             <input id="1835121526" type="text" name="entry.1835121526" class="form-control" required>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend for="1411353359">Your desired @fwdd.org email</legend>
-        <div class="form-group">
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend for="1411353359">Your desired @fwdd.org email</legend>
+          <div class="form-group">
             <p class="help-block">For example: johndoe@fwdd.org, drakelittle@fwdd.org</p>
             <input id="806758072" type="text" name="entry.806758072" class="form-control" required>
-        </div>
-    </fieldset>
-
-    <input type="hidden" name="fvv" value="1">
-    <input type="hidden" name="fbzx" value="-623228156372558087">
-    <input type="hidden" name="pageHistory" value="0">
-    <input class="btn btn-primary" type="submit" value="Submit">
-</form>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
-
-<script>
-$('#bootstrapForm').submit(function (event) {
-    event.preventDefault()
-    var extraData = {}
-    $('#bootstrapForm').ajaxSubmit({
-        data: extraData,
-        dataType: 'jsonp',
-        error: function () {
-            alert('Form submitted. Expect an email regarding your fwdd.org email within 1-2 business days.')
-        }
-    })
-})
-</script>
+          </div>
+        </fieldset>
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="fbzx" value="-623228156372558087">
+        <input type="hidden" name="pageHistory" value="0">
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+    <script>
+      $('#bootstrapForm').submit(function (event) {
+          event.preventDefault()
+          var extraData = {}
+          $('#bootstrapForm').ajaxSubmit({
+              data: extraData,
+              dataType: 'jsonp',
+              error: function () {
+                  alert('Form submitted. Expect an email regarding your fwdd.org email within 1-2 business days.')
+              }
+          })
+      })
+    </script>
   </body>
 </html>
