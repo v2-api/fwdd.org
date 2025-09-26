@@ -17,7 +17,6 @@
     <div class="padded">
       <a id="def">Send email using default app</a>
       <p>Or use:</p>
-      <br>
       <a id="g"><img width="80vw" src="/imgs/webmail/gmail.png"></a>
       <hr>
       <a id="o"><img width="80vw" src="/imgs/webmail/outlook.png"></a>
@@ -32,7 +31,7 @@
         const urlParams = new URLSearchParams(window.location.search);
 const e = urlParams.get('e');
 
-// Basic sanitization: only allow alphanumeric, dots, dashes, and underscores
+// Sanitize
 const sanitizedE = e ? e.replace(/[^a-zA-Z0-9._-]/g, '') : null;
 
 if (sanitizedE) {
@@ -71,4 +70,5 @@ if (sanitizedE) {
   </body>
 
 </html>
+
 
