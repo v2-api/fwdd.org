@@ -17,7 +17,7 @@
     }
 
 }
-html {
+html, ::placeholder, input {
     font-family: "Fragment Mono", monospace;
     font-weight: 400;
     font-style: normal;
