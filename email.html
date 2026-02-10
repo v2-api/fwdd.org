@@ -17,24 +17,33 @@
   <div class="padded">
     <h1>Send an Email</h1>
     <p>Select how you’d like to email <strong id="recipient"></strong>.</p>
+
     <div class="email-options">
       <a id="def"><img src="/imgs/icon.png" alt="Default App"><br>Default App</a>
       <a id="g"><img src="/imgs/webmail/gmail.png" alt="Gmail"><br>Gmail</a>
       <a id="o"><img src="/imgs/webmail/outlook.png" alt="Outlook"><br>Outlook</a>
-      <a id="f"><img src="/imgs/webmail/fastmail.png" alt="Fastmail"><br>Fastmail</a>
-      <a id="z"><img src="/imgs/webmail/zoho.png" alt="Zoho Mail"><br>Zoho</a>
-      <a onClick="fwddCopy()" id="c"><img src="/imgs/copy.png" alt="Copy to Clipboard"><br>Copy To Clipboard</a>
+
+      <a onClick="fwddCopy()" id="c">
+        <img src="/imgs/copy.png" alt="Copy to Clipboard"><br>Copy To Clipboard
+      </a>
+
+      <a id="contactLink">
+        <img src="/imgs/copy.png" alt="Contact Link"><br>Add To Contacts
+      </a>
     </div>
+
     <p class="help-block">Click one of the options above and we’ll open a new draft email for you automatically.</p>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const e = urlParams.get('e');
-    // Sanitize
-    const sanitizedE = e ? e.replace(/[^a-zA-Z0-9._-]/g, '') : null;
+
+    // Sanitize (allow @ now)
+    const sanitizedE = e ? e.replace(/[^a-zA-Z0-9._@+-]/g, '') : null;
+
     if (sanitizedE) {
-      const email = sanitizedE + "@fwdd.org";
+      const email = sanitizedE;
       document.getElementById("recipient").textContent = email;
       history.replaceState({}, '', '/');
 
@@ -42,14 +51,17 @@
         document.getElementById("def").href = "mailto:" + email;
         document.getElementById("g").href = "https://mail.google.com/mail/?view=cm&to=" + email;
         document.getElementById("o").href = "https://outlook.live.com/mail/0/deeplink/compose/?to=" + email;
-        document.getElementById("f").href = "https://www.fastmail.com/mail/compose?to=" + email;
-        document.getElementById("z").href = "https://mail.zoho.com/zm/#compose/na?to=" + email;
+
+        // Contact link button
+        document.getElementById("contactLink").href =
+          "https://contact.fwdd.org/?e=" + encodeURIComponent(email);
       });
     } else {
       window.location.href = "https://www.fwdd.org/";
     }
+
     function fwddCopy() {
-      navigator.clipboard.writeText(sanitizedE + "@fwdd.org");
+      navigator.clipboard.writeText(sanitizedE);
     }
   </script>
 </body>
