@@ -21,7 +21,7 @@
     <div class="field" id="phone"></div>
     <div class="field" id="website"></div>
     <div class="field" id="note"></div>
-
+    <br>
     <a href="#" class="cta" onclick="saveContact()">Save Contact</a>
   </div>
 
@@ -62,7 +62,7 @@
   const note = cleanText(noteRaw);
 
   // Require at least email or phone to be valid
-  if (email || phone) {
+  if (first || last || email || company || phone || title || website || note) {
     // Populate UI
     document.getElementById("name").textContent = (first + " " + last).trim();
     document.getElementById("title").textContent = title;
