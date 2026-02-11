@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forwarded</title>
+    <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
+    <meta name="description" content="Forwarded is an email redirection service built to keep your personal email hidden.">
+    <meta name="keywords" content="email forwarding, email alias, privacy, spam protection, email redirect, anonymous email, fwdd.org">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+    </style>
+    <link href="/style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header">
+      <a class="active" href="/">Home</a><a href="/email">Email Sharing</a><a href="/contact">Contact Sharing</a>
+    </div>
+    <hr>
+    <h1>Share Your Contact</h1>
+
+    <input id="first" placeholder="First Name"><br><br>
+    <input id="last" placeholder="Last Name"><br><br>
+    <input id="email" placeholder="Email"><br><br>
+    <input id="phone" placeholder="Phone"><br><br>
+    <input id="company" placeholder="Company"><br><br>
+    <input id="title" placeholder="Job Title"><br><br>
+    <input id="website" placeholder="Website"><br><br>
+    <input id="note" placeholder="Note"><br><br>
+
+    <button onclick="makeLink()">Get Contact Link</button>
+
+    <p>Link:</p>
+    <p id="link" style="word-break: break-all;"></p>
+  </div>
+
+  <script>
+    function makeLink() {
+      const params = new URLSearchParams({
+        first: first.value,
+        last: last.value,
+        email: email.value,
+        phone: phone.value,
+        company: company.value,
+        title: title.value,
+        website: website.value,
+        note: note.value
+      });
+
+      const url = "https://contact.fwdd.org/?" + params.toString();
+      document.getElementById("link").textContent = url;
+    }
+  </script>
+  </body>
+</html>
