@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Card</title>
+  <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
+  <meta name="description" content="Save contact info.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+  </style>
+  <link href="/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+  <div class="card">
+    <h1 id="name"></h1>
+    <div class="field" id="title"></div>
+    <div class="field" id="company"></div>
+    <div class="field" id="email"></div>
+    <div class="field" id="phone"></div>
+    <div class="field" id="website"></div>
+    <div class="field" id="note"></div>
+
+    <a href="#" class="cta" onclick="saveContact()">Save Contact</a>
+  </div>
+
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Get raw params
+  const firstRaw = urlParams.get('first');
+  const lastRaw = urlParams.get('last');
+  const emailRaw = urlParams.get('email');
+  const phoneRaw = urlParams.get('phone');
+  const companyRaw = urlParams.get('company');
+  const titleRaw = urlParams.get('title');
+  const websiteRaw = urlParams.get('website');
+  const noteRaw = urlParams.get('note');
+
+  // Sanitize helpers
+  function cleanText(v) {
+    return v ? v.replace(/[^a-zA-Z0-9 .,_@+\-]/g, '') : '';
+  }
+
+  function cleanPhone(v) {
+    return v ? v.replace(/[^0-9+()\- ]/g, '') : '';
+  }
+
+  function cleanUrl(v) {
+    return v ? v.replace(/[^a-zA-Z0-9.:\/\-_?=&]/g, '') : '';
+  }
+
+  // Sanitize
+  const first = cleanText(firstRaw);
+  const last = cleanText(lastRaw);
+  const email = cleanText(emailRaw);
+  const phone = cleanPhone(phoneRaw);
+  const company = cleanText(companyRaw);
+  const title = cleanText(titleRaw);
+  const website = cleanUrl(websiteRaw);
+  const note = cleanText(noteRaw);
+
+  // Require at least email or phone to be valid
+  if (email || phone) {
+    // Populate UI
+    document.getElementById("name").textContent = (first + " " + last).trim();
+    document.getElementById("title").textContent = title;
+    document.getElementById("company").textContent = company;
+    document.getElementById("email").textContent = email;
+    document.getElementById("phone").textContent = phone;
+    document.getElementById("website").textContent = website;
+    document.getElementById("note").textContent = note;
+
+    // Remove query string like your email page
+    history.replaceState({}, '', '/');
+  } else {
+    // Invalid / missing — bounce to home
+    window.location.href = "https://www.fwdd.org/";
+  }
+
+  function saveContact() {
+    const vcfData = `
+BEGIN:VCARD
+VERSION:3.0
+N:${last};${first};;;
+FN:${first} ${last}
+EMAIL:${email}
+TEL:${phone}
+ORG:${company}
+TITLE:${title}
+URL:${website}
+NOTE:${note}
+END:VCARD
+`.trim();
+
+    const encoded = encodeURIComponent(vcfData);
+    const dataUrl = "data:text/vcard;charset=utf-8," + encoded;
+
+    window.location.href = dataUrl;
+  }
+</script>
+</body>
+</html>
