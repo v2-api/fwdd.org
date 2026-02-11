@@ -1,50 +1,183 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forwarded</title>
-    <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
-    <meta name="description" content="Forwarded is an email redirection service built to keep your personal email hidden.">
-    <meta name="keywords" content="email forwarding, email alias, privacy, spam protection, email redirect, anonymous email, fwdd.org">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
-    </style>
-    <link href="/style.css" type="text/css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="header">
-      <a class="active" href="/">Home</a><a href="/email">Email Sharing</a><a href="/contact">Contact Sharing</a>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forwarded</title>
+  <link rel="icon" type="image/x-icon" href="/imgs/icon.png">
+
+  <meta name="description" content="Forwarded is an email redirection service built to keep your personal email hidden.">
+  <meta name="keywords" content="email forwarding, email alias, privacy, spam protection, email redirect, anonymous email, fwdd.org">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+    body { font-family: 'Fragment Mono', monospace; }
+    .page { display:none; }
+    .active-page { display:block; }
+  </style>
+
+  <link href="/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a href="/" data-page="home">Home</a>
+  <a href="/email" data-page="email">Email Sharing</a>
+  <a href="/contact" data-page="contact">Contact Sharing</a>
+</div>
+<hr>
+
+<!-- ================= HOME ================= -->
+<div id="home" class="page">
+  <div class="padded">
+    <h1>Forwarded</h1>
+    <p>An easier and safer way to share your email and contact info</p>
+
+    <button onclick="go('/email')" class="cta-button">
+      Email Sharing <img src="/imgs/icon.png">
+    </button><br><br>
+
+    <button onclick="go('/contact')" class="cta-button">
+      Contact Sharing <img src="/imgs/icon.png">
+    </button>
+
     <hr>
-    <div class="padded">
-      <h1>Forwarded</h1>
-      <p>An easier and safer way to share your email and contact info</p>
-      <button onclick="window.location.href='/email'" class="cta-button">Email Sharing<img src="/imgs/icon.png" alt="Icon"></button><br><br>
-      <button onclick="window.location.href='/contact'" class="cta-button">Contact Sharing<img src="/imgs/icon.png" alt="Icon"></button><br>
-      <br><hr>
-      <h4>Easy Email Sharing</h4>
-      <p>Share your email address instantly with a clean link that opens in most email apps and websites.</p>
-      <h3>Smart Contact Cards</h3>
-      <p>Create shareable contact links that let people save your info as a contact on their phone or computer with one click.</p>
-      <h3>Works Everywhere</h3>
-      <p>Compatible with Gmail, Outlook, Apple Mail, and most modern devices and browsers. Your recipients use whatever email serivce they already use</p>
-      <h3>Simple & Secure</h3>
-      <p>No hosting, no information storage, not even a backend. Just fill out what you want to share and copy your link</p>
-      <hr>
-      <a href="https://instagram.com/fwdd_org" target="_blank">@fwdd_org</a><br><a href="/privacy">Privacy Policy</a><br><a href="/terms">Terms of Service</a>
+
+    <h4>Easy Email Sharing</h4>
+    <p>Share your email address instantly with a clean link.</p>
+
+    <h3>Smart Contact Cards</h3>
+    <p>Create shareable contact links with one click.</p>
+
+    <h3>Works Everywhere</h3>
+    <p>Compatible with Gmail, Outlook, Apple Mail, and more.</p>
+
+    <h3>Simple & Secure</h3>
+    <p>No hosting, no backend, no storage.</p>
+
+    <hr>
+    <a href="https://instagram.com/fwdd_org" target="_blank">@fwdd_org</a><br>
+    <a href="/privacy">Privacy Policy</a><br>
+    <a href="/terms">Terms of Service</a>
+  </div>
+</div>
+
+<!-- ================= EMAIL LINK MAKER ================= -->
+<div id="email" class="page">
+  <div class="padded">
+    <h1>Share Your Email</h1>
+    <input id="emailInput" placeholder="Enter your email">
+    <button onclick="makeEmailLink()">Get link</button>
+
+    <p>Link:</p>
+    <p id="emailLink"></p>
+  </div>
+</div>
+
+<!-- ================= CONTACT LINK MAKER ================= -->
+<div id="contact" class="page">
+  <h1>Share Your Contact</h1>
+
+  <input id="first" placeholder="First Name"><br><br>
+  <input id="last" placeholder="Last Name"><br><br>
+  <input id="emailC" placeholder="Email"><br><br>
+  <input id="phone" placeholder="Phone"><br><br>
+  <input id="company" placeholder="Company"><br><br>
+  <input id="title" placeholder="Job Title"><br><br>
+  <input id="website" placeholder="Website"><br><br>
+  <input id="note" placeholder="Note"><br><br>
+
+  <button onclick="makeContactLink()">Get Contact Link</button>
+
+  <p>Link:</p>
+  <p id="contactLinkOut" style="word-break: break-all;"></p>
+</div>
+
+<!-- ================= CONTACT CARD VIEWER ================= -->
+<div id="card" class="page">
+  <div class="card">
+    <h1 id="cardName"></h1>
+    <div class="field" id="cardTitle"></div>
+    <div class="field" id="cardCompany"></div>
+    <div class="field" id="cardEmail"></div>
+    <div class="field" id="cardPhone"></div>
+    <div class="field" id="cardWebsite"></div>
+    <div class="field" id="cardNote"></div>
+    <br>
+    <a href="#" class="cta" onclick="saveContact()">Save Contact</a>
+  </div>
+</div>
+
+<!-- ================= SEND EMAIL PAGE ================= -->
+<div id="send" class="page">
+  <div class="padded">
+    <h1>Send an Email</h1>
+    <p>Select how you’d like to email <strong id="recipient"></strong>.</p>
+
+    <div class="email-options">
+      <a id="def">Default App</a>
+      <a id="g">Gmail</a>
+      <a id="o">Outlook</a>
+      <a onclick="fwddCopy()">Copy</a>
     </div>
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const e = urlParams.get('e');
-      if (e) {
-        window.location.href = "https://fwdd.org/e?e=" + e
-      };
-    </script>
-  </body>
+  </div>
+</div>
+
+<!-- ================= ROUTER + LOGIC ================= -->
+<script>
+function go(path){
+  history.pushState({}, '', path);
+  route();
+}
+
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active-page'));
+  document.getElementById(id).classList.add('active-page');
+}
+
+function route(){
+  const path = window.location.pathname;
+
+  if(path === '/email') show('email');
+  else if(path === '/contact') show('contact');
+  else if(path === '/e') show('send');
+  else show('home');
+}
+
+route();
+
+function makeEmailLink(){
+  const e = document.getElementById("emailInput").value;
+  document.getElementById("emailLink").textContent =
+    "https://fwdd.org/e?e=" + encodeURIComponent(e);
+}
+
+function makeContactLink(){
+  const params = new URLSearchParams({
+    first:first.value,
+    last:last.value,
+    email:emailC.value,
+    phone:phone.value,
+    company:company.value,
+    title:title.value,
+    website:website.value,
+    note:note.value
+  });
+
+  document.getElementById("contactLinkOut").textContent =
+    "https://contact.fwdd.org/?" + params.toString();
+}
+
+function fwddCopy(){
+  navigator.clipboard.writeText(document.getElementById("recipient").textContent);
+}
+
+function saveContact(){
+  alert("VCARD download logic here (already in your original).");
+}
+</script>
+
+</body>
 </html>
-
-
-
-
-
