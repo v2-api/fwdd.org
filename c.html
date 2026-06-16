@@ -19,7 +19,7 @@
     <div class="field" id="company"></div>
     <div class="field" id="email"></div>
     <div class="field" id="phone"></div>
-    <div class="field" id="website"></div>
+    <a class="field" id="website" target="_blank" rel="noopener noreferrer"></a>
     <div class="field" id="note"></div>
     <br>
     <a href="#" class="cta" onclick="saveContact()">Save Contact</a>
@@ -69,7 +69,18 @@
     document.getElementById("company").textContent = company;
     document.getElementById("email").textContent = email;
     document.getElementById("phone").textContent = phone;
-    document.getElementById("website").textContent = website;
+
+    const websiteEl = document.getElementById("website");
+    if (website) {
+      websiteEl.textContent = website;
+      websiteEl.href =
+        website.startsWith('http://') || website.startsWith('https://')
+          ? website
+          : 'https://' + website;
+    } else {
+      websiteEl.style.display = 'none';
+    }
+
     document.getElementById("note").textContent = note;
 
     // Remove query string like your email page
